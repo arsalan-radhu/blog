@@ -15,16 +15,16 @@ class PostsController extends Controller
         $this->middleware('auth')->except(['index','show']);
     }
 
-    public function index(Posts $posts){
+    public function index(){
         //$posts = Post::all();
 		//$posts = Post::orderBy('created_at', 'desc')->get()
         
-        
-        // $posts = Post::latest()
-        //     ->filter(request(['month','year']))
-        //     ->get();
+        //return session('message');
+        $posts = Post::latest()
+            ->filter(request(['month','year']))
+            ->get();
 
-        $posts= $posts->all();
+        //$posts= $posts->all();
         
         
             // if($month = request('month')){
@@ -92,6 +92,8 @@ class PostsController extends Controller
         //     'body' => request('body'),
         //     'user_id' => auth()->id()
         // ]);
+
+        session()->flash('message','Your post has now been published!'); 
 
         // And then redirect to the homepage
         return redirect('/');

@@ -20,6 +20,12 @@ class RegistrationController extends Controller
     {
 
         $form->persist();
+
+
+        //session('message','Here is a default message!');
+
+        session()->flash('message','Thanks so much for signing up!');
+
         // Validate the form
         // $this->validate(request(),[
         //     'name' => 'required',
