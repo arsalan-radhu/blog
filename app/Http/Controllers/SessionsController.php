@@ -31,12 +31,13 @@ class SessionsController extends Controller
         // }
         //auth()->login($user);
         if (!auth()->attempt(request(['email','password']))) {
+            // If not, redirect back
             return back()->withErrors([
-                        'message' => $user//'Please check your credentials and try again! ' 
+                        'message' => 'Please check your credentials and try again! ' 
                     ]);
         }
 
-        // If not, redirect back
+        
         //If so, sign them in
         //Redirect to the home page
         return redirect()->home();
