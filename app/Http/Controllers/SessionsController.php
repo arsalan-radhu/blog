@@ -30,6 +30,8 @@ class SessionsController extends Controller
         //     ]);
         // }
         //auth()->login($user);
+
+        //dd(request(['email','password']));
         if (!auth()->attempt(request(['email','password']))) {
             // If not, redirect back
             return back()->withErrors([
